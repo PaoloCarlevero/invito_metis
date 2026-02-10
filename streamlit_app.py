@@ -132,7 +132,7 @@ else:
     empty_grid = get_empty_grid(answers, colored_letter_pos, n_cols, colored_col_pos)
 
     for i in range(1, get_n_rows(answers)+1):
-        if st.session_state[f'risposta_{i}'] == answers[i]:
+        if st.session_state[f'risposta_{i}'] and st.session_state[f'risposta_{i}'].upper() == answers[i]:
 
             empty_grid.loc[i] = get_grid_row(answers[i], colored_letter_pos[i], colored_col_pos, n_cols, visible = True)
 
