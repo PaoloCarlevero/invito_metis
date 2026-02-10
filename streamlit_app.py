@@ -133,8 +133,11 @@ else:
 
     for i in range(1, get_n_rows(answers)+1):
         if st.session_state[f'risposta_{i}'] and st.session_state[f'risposta_{i}'].upper() == answers[i]:
-
-            empty_grid.loc[i] = get_grid_row(answers[i], colored_letter_pos[i], colored_col_pos, n_cols, visible = True)
+            ordinal_cols_index = get_ordinal_cols_index(colored_letter_pos[i], colored_col_pos)
+            new_row = get_grid_row(answers[i], colored_letter_pos[i], colored_col_pos, n_cols, visible = True)
+            new_row[ordinal_cols_index] = str(i)
+            empty_grid.loc[i] = new_row
+            
 
     st.session_state['grid'] = style_grid(empty_grid)
 
