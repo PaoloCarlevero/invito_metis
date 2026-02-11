@@ -113,6 +113,7 @@ def style_grid(grid):
 
     grid = grid.style.map(lambda x: f"background-color: {'black' if str(x).isnumeric() else 'pink' if (str(x) == '?' or str(x).isupper()) else'white'}")
     grid = grid.map(lambda x: f"color: {'white' if str(x).isnumeric() else 'black'}")
+    grid = grid.map(lambda x: f"border: {'1px solid white' if str(x) == ' ' else '1px solid black'}")
 
     return grid
 
@@ -140,9 +141,6 @@ else:
             
 
     st.session_state['grid'] = style_grid(empty_grid)
-
-
-st.table(st.session_state.grid)
 
 st.text("Domanda 1")
 st.text_input("Testo domanda 1", key='risposta_1')
@@ -191,3 +189,6 @@ st.text("Domanda 22")
 risposta_22 = st.text_input("Testo domanda 22", key='risposta_22')
 st.text("Domanda 23")
 risposta_23 = st.text_input("Testo domanda 23", key='risposta_23')
+
+st.table(st.session_state.grid)
+
